@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Monoton&family=Orbitron:wght@700&family=Press+Start+2P&family=Righteous&display=swap');
+
+:root {
+    --rouge : #c0392b;
+    --orange : #e67e22;
+    --violet : #8e44ad;
+    --jaune : #f1c40f;
+    --bleu : #2980b9; 
+    --green : #27ae60;
+    --pumkin : #d35400;
+
+    --gradiant-1 : linear-gradient(
+        225deg, 
+    rgba(255,60,172,.3) 0%,
+    rgba(120,75,160,.3) 50%,
+    rgba(43,134,197,.5) 100%
+    );
+
+    --gradiant-2 : radial-gradient(
+        circle,
+     rgba(41,128,185,.6) 0%,
+     rgba(142,68,173,.6) 25%,
+     rgba(192,57,43,.6) 50%,
+     rgba(230,126,34,.6) 75%,
+     rgba(241,196,15,.6) 100%);
+}
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+body {
+    min-height: 100vh;
+    width: 100vw;
+    padding: 0 5rem;    background-size: 100%, cover;
+    background-position: center center ,center  center;
+    background-image: 
+        var(--gradiant-1) ,
+        url(/images/galaxy-2.jpg);
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    margin: 5rem auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    font-family: 'Audiowide', cursive;
+    color: white;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+    margin-bottom: 0;
+    position: relative;
+}
+
+.wrapper {
+    width: 90%;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tone {
+    background-image: var(--gradiant-2);
+    background-size: 1000%;
+    animation: bg-animation 25s infinite alternate;
+
+    width: 9rem;
+    height: 9rem;
+    margin: 1rem;
+    border-radius: 50%;
+    box-shadow: 0px 0px 28px 5px rgba(255,255,255,0.3);
+    cursor: pointer;
+
+    transition-duration: 100ms;
+    transition-property: scale, background, box-shadow;
+    transition-timing-function: linear;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    z-index: 1;
+}
+
+@keyframes bg-animation {
+    0%{
+        background-position: left, center;
+    }
+    100%{
+        background-position: right, center;
+    }
+}
+
+.tone span {
+    font-family: 'Monoton', cursive;
+    font-size: 5rem;
+    text-transform: uppercase;
+    
+}
+
+.unstuck {
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.unstuck p {
+    color: white;
+    font-family: 'Righteous', cursive;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.unstuck a {
+    text-decoration: underline;
+    color: white;
+}
+
+/* animation */
+.tone.active {
+    scale: 1.1;
+}
+
+.tone.active[data-key="81"] {
+    background: var(--rouge);
+    box-shadow: 0px 0px 20px 20px rgba(192,57,43,1);
+}
+
+.tone.active[data-key="68"] {
+    background: var(--bleu);
+    box-shadow: 0px 0px 20px 20px rgba(41,128,185,1);
+}
+
+.tone.active[data-key="71"] {
+    background: var(--orange);
+    box-shadow: 0px 0px 20px 20px rgba(230,126,34,1);
+}
+
+.tone.active[data-key="74"] {
+    background: var(--jaune);
+    box-shadow: 0px 0px 20px 20px rgba(241,196,15,1);
+}
+
+.tone.active[data-key="76"] {
+    background: var(--violet);
+    box-shadow: 0px 0px 20px 20px rgba(142,68,173,1);
+}
+
+.tone.active[data-key="87"] {
+    background: var(--green);
+    box-shadow: 0px 0px 20px 20px rgba(39,174,96,1);
+}
+
+.tone.active[data-key="86"] {
+    background: var(--pumkin);
+    box-shadow: 0px 0px 20px 20px rgba(211,84,0,1);
+}
+
+/* Media Queries */
+@media all and (max-width:1100px) {
+    .wrapper {
+        flex-wrap: wrap;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .tone {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    .tone span {
+        font-size: 4rem;
+    }
+}
+
+
+@media all and (max-width:500px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    body {
+        background-size: 800%, 500%;
+        background-position: center center ,top  left;
+        padding: 0 2rem;
+    }
+
+    .wrapper {
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .tone {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .tone span {
+        font-size: 1.5rem;
+    }
+}
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speak to the third kind</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Speak to the third kind,<br>press the key !</h1>
+    </header>
+
+    <section class="unstuck">
+        <p>Click on play for an exemple found in this <a href="https://www.youtube.com/watch?v=S4PYI6TzqYk">Movie</a> </p>
+        <audio src="/notes 3 types/Recontres_du_troisième_type.ogg.mp3" controls></audio>
+    </section>
+    
+<div class="wrapper">
+    <div class="tone" data-key="81">
+        <span>q</span>
+    </div>
+    <div class="tone" data-key="68" >
+        <span >d</span>
+    </div>
+    <div class="tone" data-key="71">
+        <span >g</span>
+    </div>
+    <div class="tone" data-key="74">
+        <span>j</span>
+    </div>
+    <div class="tone" data-key="76">
+        <span>l</span>
+    </div>
+    <div class="tone" data-key="87">
+        <span>w</span>
+    </div>
+    <div class="tone" data-key="86">
+        <span>v</span>
+    </div>
+</div>
+
+<audio data-key="81" src="/notes 3 types/note5.wav"></audio>
+<audio data-key="68" src="/notes 3 types/note4.wav"></audio>
+<audio data-key="71" src="/notes 3 types/note1.wav"></audio>
+<audio data-key="74" src="/notes 3 types/note2.wav"></audio>
+<audio data-key="76" src="/notes 3 types/note3.wav"></audio>
+<audio data-key="87" src="/notes 3 types/note6.wav"></audio>
+<audio data-key="86" src="/notes 3 types/note7.wav"></audio>
+
+<script>
+    const toneButton = document.querySelectorAll('.tone');
+    // event with the mouse
+    toneButton.forEach(element => element.addEventListener("mousedown", playClick));
+    toneButton.forEach(element => element.addEventListener("mouseup", removeClick));
+    // event with the key
+    window.addEventListener("keydown", playKey);
+    window.addEventListener("keyup", removeKey);
+    // event with touch
+    toneButton.forEach(element => element.addEventListener("touchstart", playClick));
+    toneButton.forEach(element => element.addEventListener("touchend", removeClick));
+
+    function playClick(e) {
+        const targetKey = e.currentTarget.dataset.key;
+        const audio = document.querySelector(`audio[data-key="${targetKey}"]`);
+        audio.currentTime = 0;
+         if (audio === null) {return} else {audio.play()};
+        e.currentTarget.classList.add("active");
+    }
+
+    function removeClick(e) {
+        const targetKey = e.currentTarget.dataset.key;
+        e.currentTarget.classList.remove("active");
+    }
+
+    function playKey(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+        const body = document.querySelector('body');
+        audio.currentTime = 0;
+       if (audio === null) {return} else {audio.play()};
+       key.classList.add("active");
+       e.currentTarget.classList.add("active");
+    }
+
+    function removeKey(e) {
+        const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+        const body = document.querySelector('body');
+        key.classList.remove("active");
+        e.currentTarget.classList.remove("active");
+    }
+</script>
+</body>
+</html>
